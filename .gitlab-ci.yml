@@ -14,7 +14,7 @@ build_prod:
     refs:
       - /^stable\/.*/
   artifacts:
-    path:
+    paths:
       - dist
   before_script:
     - npm install
