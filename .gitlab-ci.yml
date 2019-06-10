@@ -5,8 +5,20 @@ cache:
     - node_modules/
 
 stages:
+  - test
   - build
   # - deploy
+
+before_script:
+  - npm install
+
+run_tests:
+  stage: test
+  only:
+    refs:
+      - /^stable\/.*/
+    script:
+      - npm run test
 
 build_prod:
   stage: build
@@ -16,8 +28,6 @@ build_prod:
   artifacts:
     paths:
       - dist
-  before_script:
-    - npm install
   script:
     - npm run prod
 
