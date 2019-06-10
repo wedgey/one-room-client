@@ -1,0 +1,8 @@
+.bash_history
+.config
+.gitconfig
+.npm
+.ssh
+Dockerfile
+docker-compose.yml
+node_modules

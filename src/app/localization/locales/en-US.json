@@ -1,0 +1,14 @@
+{
+	"common.apartment": "Apartment",
+	"common.house": "House",
+
+	"components.forms.login.username": "Username",
+	"components.forms.login.usernameMissing": "Oops. Forgot your username!",
+	"components.forms.login.password": "Password",
+	"components.forms.login.passwordMissing": "Oops. Forgot your password!",
+	"components.forms.login.rememberMe": "Remember Me",
+	"components.forms.login.forgotPassword": "Forgot Password",
+	"components.forms.login.submit": "Log in",
+
+	"components.forms.propertySearchForm.addressPlaceholder": "City, Address, Neighborhood, Skytrain Station..."
+}

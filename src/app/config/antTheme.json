@@ -1,0 +1,11 @@
+{
+	"prefix": "ant",
+	"border-color-split": "hsv(0,0,91%)",
+	"border-style-base": "solid",
+	"border-width-base": "1px",
+	"card-head-padding": "12px",
+	"card-padding-base": "24px",
+	"layout-header-height": "64px",
+	"primary-color": "#889C93",
+	"tabs-card-height": "40px"
+}

@@ -1,0 +1,12 @@
+{
+	"rootDir": "../../src",
+	"moduleNameMapper": {
+		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/app/__tests__/fileMock.js",
+		"\\.(css|scss|less)$": "identity-obj-proxy",
+		"isomorphic-style-loader/lib/withStyles": "<rootDir>/app/__tests__/withStyles.js"
+	},
+	"verbose": true,
+	"coveragePathIgnorePatterns": ["/node_modules/"],
+	"moduleFileExtensions": ["ts", "tsx", "js", "jsx"],
+	"setupFilesAfterEnv": ["../configs/tests/setupTests.js"]
+}
