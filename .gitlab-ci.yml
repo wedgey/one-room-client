@@ -17,8 +17,8 @@ run_tests:
   only:
     refs:
       - /^stable\/.*/
-    script:
-      - npm run test
+  script:
+    - npm run test
 
 build_prod:
   stage: build
