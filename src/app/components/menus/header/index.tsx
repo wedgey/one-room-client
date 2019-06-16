@@ -69,6 +69,12 @@ class HeaderBar extends React.PureComponent<HeaderBarProps, HeaderBarState> {
 		});
 	};
 
+	updateOpenMenus = (openKeys: HeaderBarState['openKeys']) => {
+		this.setState({
+			openKeys
+		});
+	};
+
 	generateUserMenu = memoizeOne((user: HeaderBarProps['user']) => {
 		if (!user) {
 			return (
@@ -95,7 +101,12 @@ class HeaderBar extends React.PureComponent<HeaderBarProps, HeaderBarState> {
 				<Col span={12}>
 					<FullHeightContainer type="flex" justify="end">
 						<Col>
-							<NavDropdown mode="horizontal" triggerSubMenuAction="click" openKeys={this.state.openKeys}>
+							<NavDropdown
+								mode="horizontal"
+								triggerSubMenuAction="click"
+								openKeys={this.state.openKeys}
+								onOpenChange={this.updateOpenMenus}
+							>
 								{userMenu}
 							</NavDropdown>
 						</Col>

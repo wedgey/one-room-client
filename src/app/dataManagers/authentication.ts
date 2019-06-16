@@ -1,5 +1,7 @@
 import BaseDataManager, { BACKEND_ROUTES } from './base';
 import CookiesManager from '../utils/cookiesManager';
+import { loadUser } from '../actions/user';
+import { loadActiveUser } from '../actions/app';
 
 interface LoginParams {
 	email: string;
@@ -27,6 +29,8 @@ class AuthenticationManager extends BaseDataManager {
 		const { email, password } = params;
 		return this.RequestManager.post(BACKEND_ROUTES.AUTHENTICATION.Login, { email, password }).then((response) => {
 			CookiesManager.set('token', response.data.token, { path: '/' });
+			loadUser(response.data.user);
+			loadActiveUser(response.data.user.id);
 		});
 	}
 
@@ -48,4 +52,5 @@ class AuthenticationManager extends BaseDataManager {
 	}
 }
 
-export default new AuthenticationManager();
+const instance = new AuthenticationManager();
+export { instance as AuthenticationManager };

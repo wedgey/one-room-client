@@ -15,7 +15,9 @@ const MainContainer = styled(Row)`
 	background-image: url(${MainBg});
 	background-position: center;
 	background-size: cover;
-	height: 100%;
+	height: calc(
+		100vh - ${(props) => props.theme['layout-footer-height'] + ' - ' + props.theme['layout-header-height']}
+	);
 `;
 
 export class HomePage extends React.PureComponent<HomePageProps, HomePageState> {

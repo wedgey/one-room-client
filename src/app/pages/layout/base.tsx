@@ -6,9 +6,14 @@ import { connect } from 'react-redux';
 import HeaderBar from '../../components/menus/header';
 import { RootState } from '../../reducers';
 import theme from '../../config/antTheme.json';
+import { getActiveUser } from '../../selectors';
+import { IUser } from '../../models';
+import { ModelWithFields } from 'redux-orm';
 
 interface OwnProps {}
-interface StoreProps {}
+interface StoreProps {
+	user: ModelWithFields<IUser>;
+}
 type BaseLayoutProps = OwnProps & StoreProps;
 
 const GlobalStyle = createGlobalStyle`
@@ -26,29 +31,35 @@ const OuterLayout = styled(Layout)`
 	min-height: 100vh;
 `;
 
-const StyledLayout = styled(Layout)`
-	height: calc(100vh - 45px);
+const LayoutContent = styled(Layout.Content)`
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 45px;
+	position: relative;
 `;
+
+const StyledLayout = styled(Layout)``;
 
 const StyledFooter = styled(Layout.Footer)`
 	bottom: 0px;
-	height: 45px;
+	height: ${(props) => props.theme['layout-footer-height']};
 	position: fixed;
 	width: 100%;
 `;
 
+const BaseLayoutTheme = { ...theme, 'layout-footer-height': '45px' };
 const BaseLayout: React.SFC<BaseLayoutProps> = (props) => {
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={BaseLayoutTheme}>
 			<React.Fragment>
 				<GlobalStyle />
 				<OuterLayout>
 					<StyledLayout>
 						<Layout>
 							<StyledHeader>
-								<HeaderBar />
+								<HeaderBar user={props.user} />
 							</StyledHeader>
-							<Layout.Content>{props.children}</Layout.Content>
+							<LayoutContent>{props.children}</LayoutContent>
 						</Layout>
 					</StyledLayout>
 					<StyledFooter>Footer</StyledFooter>
@@ -59,7 +70,9 @@ const BaseLayout: React.SFC<BaseLayoutProps> = (props) => {
 };
 
 const mapStoreToProps = (store: RootState) => {
-	return {};
+	return {
+		user: getActiveUser(store)
+	};
 };
 
 export default connect(mapStoreToProps)(BaseLayout);

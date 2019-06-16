@@ -4,8 +4,14 @@ import { FormComponentProps } from 'antd/lib/form';
 import { localization } from '../../../localization';
 import { InputProps } from 'antd/lib/input';
 
-interface LoginFormProps extends FormComponentProps {
+export interface LoginFormProperties {
+	username: string;
+	password: string;
+}
+
+interface LoginFormProps extends FormComponentProps<LoginFormProperties> {
 	size?: InputProps['size'];
+	onSubmit: (values: LoginFormProperties) => void;
 	registerHandler?: () => void;
 }
 interface LoginFormState {}
@@ -19,7 +25,9 @@ class LoginForm extends React.PureComponent<LoginFormProps, LoginFormState> {
 	handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
-			if (!err) console.log('Received values of form: ', values);
+			if (!err) {
+				if (this.props.onSubmit) this.props.onSubmit(values);
+			}
 		});
 	};
 
@@ -54,6 +62,7 @@ class LoginForm extends React.PureComponent<LoginFormProps, LoginFormState> {
 						rules: [{ required: true, message: localization.get('components.forms.login.passwordMissing') }]
 					})(
 						<Input
+							type="password"
 							size={size}
 							prefix={<Icon type="lock" />}
 							placeholder={localization.get('components.forms.login.password')}
@@ -91,4 +100,4 @@ class LoginForm extends React.PureComponent<LoginFormProps, LoginFormState> {
 	}
 }
 
-export default Form.create()(LoginForm);
+export default Form.create<LoginFormProps>()(LoginForm);

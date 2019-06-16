@@ -23,14 +23,18 @@ interface PropertyCreationProperties {
 	amenities: number;
 }
 
-interface PropertyCreationFormProps extends FormComponentProps<PropertyCreationProperties> {
+interface PropertyCreationStateProperties extends Omit<PropertyCreationProperties, 'amenities'> {
+	amenities: number[];
+}
+
+interface PropertyCreationFormProps extends FormComponentProps<PropertyCreationStateProperties> {
 	size?: InputProps['size'];
 	onSubmit: (values: PropertyCreationProperties) => void;
 	onCancel: () => void;
 }
 
 interface PropertyCreationFormState {
-	values: PropertyCreationProperties;
+	values: PropertyCreationStateProperties;
 }
 
 const rowGutterSize = 16;
@@ -39,53 +43,53 @@ const GrowingCol = styled(Col)`
 	flex-grow: 1;
 `;
 
-const CheckboxlessCheckbox = Checkbox;
-// const CheckboxlessCheckbox = styled(Checkbox)`
-// 	& > span.${(props) => `${props.theme.prefix}-checkbox`} {
-// 		display: none;
+const CheckboxlessCheckbox = styled(Checkbox)`
+	& > span.${(props) => `${props.theme.prefix}-checkbox`} {
+		display: none;
 
-// 		& + span {
-// 			padding: 0px;
-// 		}
-// 	}
-// `;
+		& + span {
+			padding: 0px;
+		}
+	}
 
+	&.${(props) => props.theme.prefix}-checkbox-wrapper-checked {
+		color: blue;
+	}
+`;
+
+// Will need to look at using long.js when amenities gets greateer than 30
 const amenities = [
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' },
-	{ icon: 'down-square', label: 'Parking' }
+	{ icon: 'down-square', label: 'Parking', value: 0 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 1 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 2 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 3 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 4 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 5 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 6 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 7 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 8 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 9 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 10 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 11 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 12 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 13 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 14 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 15 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 16 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 17 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 18 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 19 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 20 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 21 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 22 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 23 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 24 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 25 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 26 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 27 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 28 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 29 },
+	{ icon: 'down-square', label: 'Parking', value: 1 << 30 }
 ];
 
 class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps, PropertyCreationFormState> {
@@ -100,7 +104,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 			province: '',
 			postalCode: '',
 			country: '',
-			amenities: 
+			amenities: []
 		}
 	};
 	constructor(props: PropertyCreationFormProps) {
@@ -111,6 +115,9 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
+				let number = values.amenities.reduce((acc, v) => acc | v, 0);
+				if (this.props.onSubmit) this.props.onSubmit({ ...values, amenities: number });
+				console.log(number);
 				console.log('Received values of form: ', values);
 			}
 		});
@@ -129,7 +136,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 					</Col>
 					<Col style={{ flexGrow: 1 }}>
 						<Form.Item label="Property Name">
-							{getFieldDecorator<PropertyCreationProperties>('name', {
+							{getFieldDecorator<PropertyCreationStateProperties>('name', {
 								rules: [
 									{
 										required: true,
@@ -157,7 +164,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 				<Row type="flex" gutter={rowGutterSize}>
 					<GrowingCol>
 						<Form.Item label="Description">
-							{getFieldDecorator<PropertyCreationProperties>('description')(
+							{getFieldDecorator<PropertyCreationStateProperties>('description')(
 								<Input.TextArea autosize={{ minRows: 4, maxRows: 7 }} />
 							)}
 						</Form.Item>
@@ -167,7 +174,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 				<Row type="flex">
 					<GrowingCol>
 						<Form.Item label="Address">
-							{getFieldDecorator<PropertyCreationProperties>('address', {
+							{getFieldDecorator<PropertyCreationStateProperties>('address', {
 								rules: [
 									{
 										required: true,
@@ -181,7 +188,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 				<Row type="flex" gutter={rowGutterSize}>
 					<GrowingCol>
 						<Form.Item label="City">
-							{getFieldDecorator<PropertyCreationProperties>('city', {
+							{getFieldDecorator<PropertyCreationStateProperties>('city', {
 								rules: [
 									{
 										required: true,
@@ -193,7 +200,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 					</GrowingCol>
 					<GrowingCol>
 						<Form.Item label="Province">
-							{getFieldDecorator<PropertyCreationProperties>('province', {
+							{getFieldDecorator<PropertyCreationStateProperties>('province', {
 								rules: [
 									{
 										required: true,
@@ -207,7 +214,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 				<Row type="flex" gutter={rowGutterSize}>
 					<GrowingCol>
 						<Form.Item label="Postal Code">
-							{getFieldDecorator<PropertyCreationProperties>('postalCode', {
+							{getFieldDecorator<PropertyCreationStateProperties>('postalCode', {
 								rules: [
 									{
 										required: true,
@@ -219,7 +226,7 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 					</GrowingCol>
 					<GrowingCol>
 						<Form.Item label="Country">
-							{getFieldDecorator<PropertyCreationProperties>('country', {
+							{getFieldDecorator<PropertyCreationStateProperties>('country', {
 								rules: [
 									{
 										required: true,
@@ -232,23 +239,21 @@ class PropertyCreationForm extends React.PureComponent<PropertyCreationFormProps
 				</Row>
 				<Divider>Amenities</Divider>
 				<Form.Item>
-					{getFieldDecorator<PropertyCreationProperties>('amenities', {
-						getValueFromEvent: (event) => parseInt(event.nativeEvent.target.value)
-					})(
-						// <Checkbox.Group>
-						<List
-							grid={{ gutter: rowGutterSize, column: 12 }}
-							dataSource={amenities}
-							renderItem={(item, idx) => (
-								<List.Item style={{ textAlign: 'center' }}>
-									<CheckboxlessCheckbox value={idx}>
-										<Icon type={item.icon} />
-										<span style={{ display: 'block' }}>{item.label}</span>
-									</CheckboxlessCheckbox>
-								</List.Item>
-							)}
-						/>
-						// </Checkbox.Group>
+					{getFieldDecorator<PropertyCreationStateProperties>('amenities')(
+						<Checkbox.Group>
+							<List
+								grid={{ gutter: rowGutterSize, column: 12 }}
+								dataSource={amenities}
+								renderItem={(item, idx) => (
+									<List.Item style={{ textAlign: 'center' }}>
+										<CheckboxlessCheckbox value={item.value}>
+											<Icon type={item.icon} />
+											<span style={{ display: 'block' }}>{item.label}</span>
+										</CheckboxlessCheckbox>
+									</List.Item>
+								)}
+							/>
+						</Checkbox.Group>
 					)}
 				</Form.Item>
 				<Form.Item>

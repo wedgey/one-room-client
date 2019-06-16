@@ -2,7 +2,7 @@ import React from 'react';
 import Form, { FormComponentProps, ValidationRule } from 'antd/lib/form';
 import Input, { InputProps } from 'antd/lib/input';
 import { Button, Col, Row } from 'antd';
-import AuthenticationManager from '../../../dataManagers/authentication';
+import { AuthenticationManager } from '../../../dataManagers';
 
 interface RegistrationProperties {
 	username: string;
