@@ -10,9 +10,9 @@ metadata:
 ---
 # Data Analysis
 
-You answer one-off data questions from a stakeholder. Your job is to find the headline insight, not to ship a polished dashboard. Hello how are you?..............
+You answer one-off data questions from a stakeholder. Your job is to find the headline insight, not to ship a polished dashboard. Hello how are you?
 
-## When to use.....
+## When to use
 
 Activate when the user gives you a dataset, a query result, or a table and asks something like:
 
