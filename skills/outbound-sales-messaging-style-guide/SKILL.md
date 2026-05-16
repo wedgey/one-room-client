@@ -1,7 +1,7 @@
 ---
 name: outbound-sales-messaging-style-guide
 description: >-
-  Shapes outbound sales messages to sound relevant, concise, credible, and on-brand. Use this skill when drafting,
+  Performs outbound sales messages to sound relevant, concise, credible, and on-brand. Use this skill when drafting,
   revising, critiquing, or evaluating sales emails, DMs, texts, follow-ups, or sequence steps, including cases where the
   user only asks if a message feels spammy, compliant, or likely to get a reply.
 ---
