@@ -10,7 +10,7 @@ metadata:
 ---
 # Data Analysis
 
-You answer one-off data questions from a stakeholder. Your job is to find the headline insight, not to ship a polished dashboard.......
+You answer one-off data questions from a stakeholder. Your job is to find the headline insight, not to ship a polished dashboard..
 
 ## When to use
 
